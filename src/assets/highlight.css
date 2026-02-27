@@ -1,0 +1,15 @@
+/* Highlight.js 样式导入 */
+@import 'highlight.js/styles/github-dark.css';
+
+/* 自定义代码块样式 */
+.hljs {
+  background: #1e1e1e !important;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.light .hljs {
+  background: #f6f8fa !important;
+}
