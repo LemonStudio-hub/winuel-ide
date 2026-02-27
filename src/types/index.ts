@@ -38,3 +38,9 @@ export interface AppSettings {
   lineNumbers: boolean;
   wordWrap: boolean;
 }
+
+export interface CodeBlock {
+  language: string;
+  filename?: string;
+  code: string;
+}
