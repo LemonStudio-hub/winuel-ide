@@ -1,33 +1,20 @@
 {
-  "name": "winuel-ide",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "winuel-ide-liaokit-test",
+  "version": "1.0.0",
+  "description": "LiaoKit pure test environment",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "echo 'This is a pure LiaoKit test environment'",
+    "test": "echo 'No tests configured'"
   },
+  "keywords": [
+    "liaokit",
+    "ai",
+    "chat"
+  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@vueuse/core": "^14.2.1",
-    "@yuandezuohua/liaokit": "^2.8.9",
-    "highlight.js": "^11.11.1",
-    "markdown-it": "^14.1.1",
-    "pinia": "^3.0.4",
-    "vue": "^3.5.25",
-    "vue-router": "^5.0.3"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.2.1",
-    "@types/markdown-it": "^14.1.2",
-    "@types/node": "^24.10.1",
-    "@vitejs/plugin-vue": "^6.0.2",
-    "@vue/tsconfig": "^0.8.1",
-    "autoprefixer": "^10.4.27",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.2.1",
-    "typescript": "~5.9.3",
-    "vite": "^7.3.1",
-    "vue-tsc": "^3.1.5"
+    "@yuandezuohua/liaokit": "^2.8.9"
   }
 }
