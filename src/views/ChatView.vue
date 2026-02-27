@@ -1,6 +1,6 @@
 <template>
-  <div class="h-screen flex flex-col bg-white">
-    <header class="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+  <div class="h-screen flex flex-col bg-white overflow-hidden">
+    <header class="flex-shrink-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-4">
         <h1 class="text-xl font-semibold tracking-tight text-gray-900">Winuel</h1>
         <span class="text-xs px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium">
@@ -15,7 +15,7 @@
     </header>
 
     <main class="flex-1 overflow-y-auto pb-32">
-      <div v-if="currentMessages.length === 0" class="flex flex-col items-center justify-center h-full px-6">
+      <div v-if="currentMessages.length === 0" class="flex flex-col items-center justify-center min-h-full px-6">
         <div class="w-20 h-20 mb-6 rounded-full bg-gray-50 flex items-center justify-center">
           <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>

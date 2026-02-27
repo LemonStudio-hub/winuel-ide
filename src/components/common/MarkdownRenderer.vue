@@ -27,7 +27,10 @@ const renderedContent = computed(() => {
   margin: 1rem 0;
 }
 
-.markdown :deep(code) {
+/* 只对内联代码应用样式，不影响 pre 中的代码高亮 */
+.markdown :deep(p > code),
+.markdown :deep(li > code),
+.markdown :deep(td > code) {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   padding-top: 0.125rem;
@@ -38,12 +41,10 @@ const renderedContent = computed(() => {
   color: rgb(17 24 39);
 }
 
+/* pre 中的代码由 highlight.js 处理，不覆盖样式 */
 .markdown :deep(pre code) {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  display: block;
+  padding: 0;
+  font-size: inherit;
   background-color: transparent;
 }
 
