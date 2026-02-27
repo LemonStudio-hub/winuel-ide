@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^14.2.1",
+    "@yuandezuohua/liaokit": "^2.8.9",
     "highlight.js": "^11.11.1",
     "markdown-it": "^14.1.1",
     "pinia": "^3.0.4",
