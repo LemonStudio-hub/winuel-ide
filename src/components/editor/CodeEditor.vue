@@ -1,27 +1,27 @@
 <template>
-  <div class="h-full flex flex-col bg-white">
-    <div class="flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 border-b border-gray-100">
-      <div class="flex items-center gap-2 sm:gap-3">
+  <div class="h-full flex flex-col bg-white w-full max-w-full overflow-hidden">
+    <div class="flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 border-b border-gray-100 w-full">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0">
         <span class="text-sm font-medium text-gray-900 truncate">
           {{ fileName }}
         </span>
         <span
           v-if="language"
-          class="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded whitespace-nowrap"
+          class="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded whitespace-nowrap flex-shrink-0"
         >
           {{ language }}
         </span>
       </div>
-      <div class="flex items-center gap-1 sm:gap-2">
+      <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
         <Button variant="ghost" size="sm" @click="$emit('save')">
           保存
         </Button>
       </div>
     </div>
-    <div class="flex-1 overflow-auto p-3 sm:p-4 md:p-6">
+    <div class="flex-1 overflow-auto p-3 sm:p-4 md:p-6 w-full">
       <Textarea
         :model-value="modelValue"
-        class="w-full h-full font-mono text-xs sm:text-sm"
+        class="w-full h-full font-mono text-xs sm:text-sm max-w-full"
         @update:model-value="$emit('update:modelValue', $event)"
       />
     </div>
@@ -52,6 +52,14 @@ defineEmits<{
   :deep(textarea) {
     font-size: 12px;
     line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
+}
+
+/* 确保所有元素不会超出边界 */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 </style>

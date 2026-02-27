@@ -1,30 +1,30 @@
 <template>
   <div class="h-screen flex flex-col bg-white overflow-hidden">
     <header class="flex-shrink-0 bg-white border-b border-gray-100 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3 sm:gap-4">
-        <h1 class="text-lg sm:text-xl font-semibold tracking-tight text-gray-900">Winuel</h1>
-        <span class="text-xs px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium">
+      <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+        <h1 class="text-lg sm:text-xl font-semibold tracking-tight text-gray-900 truncate">Winuel</h1>
+        <span class="text-xs px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium whitespace-nowrap">
           对话
         </span>
       </div>
-      <nav class="flex items-center gap-1">
+      <nav class="flex items-center gap-1 flex-shrink-0">
         <Button variant="ghost" size="sm" @click="router.push('/editor')">
           编辑器
         </Button>
       </nav>
     </header>
 
-    <main class="flex-1 overflow-hidden">
+    <main class="flex-1 overflow-hidden w-full">
       <LiaoWindow 
         title="AI 对话" 
-        class="h-full"
+        class="h-full w-full"
         :show-header="false"
       >
         <LiaoMessageList
           :messages="formattedMessages"
           :use-ai-adapter="false"
           :is-streaming="isStreaming"
-          class="h-full"
+          class="h-full w-full"
         />
         <LiaoInputArea
           v-model="inputValue"
@@ -75,17 +75,47 @@ function handleSend() {
 /* 移动端适配样式 */
 :deep(.liao-window) {
   height: 100%;
+  width: 100%;
   border-radius: 0;
+  overflow: hidden;
 }
 
 :deep(.liao-message-list) {
   padding: 0;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* 调整输入框区域 */
 :deep(.liao-input-area) {
   padding: 0.75rem 1rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* 消息气泡容器 */
+:deep(.liao-message-list) > :deep(.liao-message-bubble) {
+  max-width: 100%;
+  padding: 0 0.75rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  :deep(.liao-message-list) > :deep(.liao-message-bubble) {
+    max-width: 90%;
+    padding: 0 1rem;
+  }
+}
+
+/* 消息内容容器 */
+:deep(.liao-message-bubble-content) {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 /* 移动端字体调整 */
@@ -102,12 +132,40 @@ function handleSend() {
   :deep(.liao-message-bubble code) {
     font-size: 0.8rem;
   }
+
+  :deep(.liao-input-area) {
+    padding: 0.5rem 0.75rem;
+  }
 }
 
 /* 确保代码块在移动端可以横向滚动 */
 :deep(.liao-message-bubble pre) {
   overflow-x: auto;
   max-width: 100%;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+/* 确保内联代码不换行 */
+:deep(.liao-message-bubble p > code),
+:deep(.liao-message-bubble li > code) {
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+  display: inline-block;
+}
+
+/* 确保表格不会超出边界 */
+:deep(.liao-message-bubble table) {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+/* 确保长单词换行 */
+:deep(.liao-message-bubble) {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* 调整消息间距 */
@@ -119,5 +177,17 @@ function handleSend() {
   :deep(.liao-message-list) > :deep(.liao-message-bubble) {
     margin-bottom: 1rem;
   }
+}
+
+/* 确保输入框不会超出边界 */
+:deep(.liao-input-area input),
+:deep(.liao-input-area textarea) {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 防止任何元素溢出 */
+* {
+  max-width: 100%;
 }
 </style>

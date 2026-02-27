@@ -46,6 +46,8 @@ const textareaClasses = computed(() => {
     'focus:outline-none',
     'focus:ring-2',
     'resize-none',
+    'max-w-full',
+    'box-border',
   ];
 
   const colorClasses = props.error
