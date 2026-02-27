@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 h-full">
-    <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-      <h3 class="font-semibold text-gray-900 dark:text-white text-sm">文件</h3>
+  <div class="h-full flex flex-col">
+    <div class="px-4 py-3 border-b border-gray-100">
+      <h3 class="font-medium text-gray-900 text-sm">文件</h3>
     </div>
-    <div class="p-2">
+    <div class="flex-1 overflow-y-auto p-2">
       <div
         v-for="file in files"
         :key="file.id"
@@ -11,10 +11,10 @@
         @click="$emit('select', file.id)"
       >
         <span class="mr-2">{{ getFileIcon(file.name) }}</span>
-        <span class="flex-1 truncate">{{ file.name }}</span>
+        <span class="flex-1 truncate text-sm">{{ file.name }}</span>
         <span
           v-if="file.id === currentFileId && unsavedChanges"
-          class="text-yellow-500"
+          class="text-gray-400 ml-2"
         >
           ●
         </span>
@@ -47,10 +47,10 @@ const fileItemClasses = (fileId: string) => {
     'rounded-lg',
     'cursor-pointer',
     'transition-colors',
-    'text-sm',
+    'duration-150',
     props.currentFileId === fileId
-      ? 'bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300'
-      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700',
+      ? 'bg-gray-100 text-gray-900'
+      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
   ].join(' ');
 };
 

@@ -1,27 +1,31 @@
 <template>
-  <div class="h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
-    <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <h1 class="text-xl font-bold text-gray-900 dark:text-white">Winuel IDE</h1>
-        <span class="text-xs px-2 py-1 bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300 rounded-full">
-          AI对话
+  <div class="h-screen flex flex-col bg-white">
+    <header class="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <h1 class="text-xl font-semibold tracking-tight text-gray-900">Winuel</h1>
+        <span class="text-xs px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium">
+          对话
         </span>
       </div>
-      <nav class="flex items-center gap-2">
+      <nav class="flex items-center gap-1">
         <Button variant="ghost" size="sm" @click="router.push('/editor')">
           编辑器
         </Button>
       </nav>
     </header>
 
-    <main class="flex-1 overflow-y-auto pb-24">
-      <div v-if="currentMessages.length === 0" class="flex flex-col items-center justify-center h-full px-4">
-        <div class="text-6xl mb-4">🤖</div>
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-          开始对话
+    <main class="flex-1 overflow-y-auto pb-32">
+      <div v-if="currentMessages.length === 0" class="flex flex-col items-center justify-center h-full px-6">
+        <div class="w-20 h-20 mb-6 rounded-full bg-gray-50 flex items-center justify-center">
+          <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+          </svg>
+        </div>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-3 tracking-tight">
+          开始新的对话
         </h2>
-        <p class="text-gray-600 dark:text-gray-400 text-center max-w-md">
-          向我提问任何编程问题，我会帮你编写代码、解释概念、解决问题
+        <p class="text-gray-500 text-center max-w-md leading-relaxed">
+          问我任何关于编程的问题，我会帮你编写代码、解释概念、解决问题
         </p>
       </div>
 

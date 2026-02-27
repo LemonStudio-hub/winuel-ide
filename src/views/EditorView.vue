@@ -1,21 +1,21 @@
 <template>
-  <div class="h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
-    <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <h1 class="text-xl font-bold text-gray-900 dark:text-white">Winuel IDE</h1>
-        <span class="text-xs px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 rounded-full">
-          代码编辑器
+  <div class="h-screen flex flex-col bg-white">
+    <header class="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <h1 class="text-xl font-semibold tracking-tight text-gray-900">Winuel</h1>
+        <span class="text-xs px-3 py-1.5 bg-gray-100 text-gray-600 rounded-full font-medium">
+          编辑器
         </span>
       </div>
-      <nav class="flex items-center gap-2">
+      <nav class="flex items-center gap-1">
         <Button variant="ghost" size="sm" @click="router.push('/')">
-          AI对话
+          对话
         </Button>
       </nav>
     </header>
 
     <div class="flex-1 flex overflow-hidden">
-      <aside class="w-64 flex-shrink-0 hidden md:block">
+      <aside class="w-64 flex-shrink-0 hidden md:block border-r border-gray-100">
         <FileTree
           :files="files"
           :current-file-id="currentFileId"
@@ -33,10 +33,12 @@
             @save="handleSave"
           />
         </div>
-        <div v-else class="flex-1 flex items-center justify-center">
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <div class="text-4xl mb-2">📁</div>
-            <p>没有打开的文件</p>
+        <div v-else class="flex-1 flex items-center justify-center bg-gray-50">
+          <div class="text-center">
+            <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            <p class="text-gray-500">没有打开的文件</p>
           </div>
         </div>
       </main>

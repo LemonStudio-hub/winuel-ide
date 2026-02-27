@@ -47,19 +47,19 @@ const inputClasses = computed(() => {
     'border',
     'rounded-lg',
     'transition-all',
-    'duration-200',
+    'duration-150',
     'focus:outline-none',
     'focus:ring-2',
   ];
 
   const colorClasses = props.error
-    ? ['border-red-500', 'focus:ring-red-500', 'dark:border-red-400']
-    : ['border-gray-300', 'focus:ring-primary-500', 'focus:border-primary-500', 'dark:border-gray-600', 'dark:focus:border-primary-500'];
+    ? ['border-red-500', 'focus:ring-red-500']
+    : ['border-gray-200', 'focus:ring-gray-900', 'focus:border-gray-900'];
 
   const sizeClasses = {
     sm: ['px-3', 'py-1.5', 'text-sm'],
-    md: ['px-4', 'py-2', 'text-base'],
-    lg: ['px-6', 'py-3', 'text-lg'],
+    md: ['px-4', 'py-2', 'text-sm'],
+    lg: ['px-6', 'py-3', 'text-base'],
   };
 
   return [
@@ -67,8 +67,8 @@ const inputClasses = computed(() => {
     ...colorClasses,
     ...sizeClasses[props.size],
     props.disabled
-      ? 'bg-gray-100 cursor-not-allowed dark:bg-gray-800'
-      : 'bg-white dark:bg-gray-900',
+      ? 'bg-gray-50 cursor-not-allowed'
+      : 'bg-white placeholder:text-gray-400',
   ].filter(Boolean).join(' ');
 });
 </script>

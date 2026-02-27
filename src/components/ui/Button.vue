@@ -4,7 +4,6 @@
     :disabled="disabled || loading"
     @click="$emit('click', $event)"
   >
-    <span v-if="loading" class="animate-spin mr-2">⟳</span>
     <slot />
   </button>
 </template>
@@ -40,7 +39,7 @@ const buttonClasses = computed(() => {
     'font-medium',
     'rounded-lg',
     'transition-all',
-    'duration-200',
+    'duration-150',
     'focus:outline-none',
     'focus:ring-2',
     'focus:ring-offset-2',
@@ -48,44 +47,40 @@ const buttonClasses = computed(() => {
 
   const variantClasses = {
     primary: [
-      'bg-primary-600',
+      'bg-gray-900',
       'text-white',
-      'hover:bg-primary-700',
-      'active:bg-primary-800',
-      'focus:ring-primary-500',
-      'disabled:bg-primary-400',
+      'hover:bg-gray-800',
+      'active:bg-gray-700',
+      'focus:ring-gray-900',
+      'disabled:bg-gray-300',
     ],
     secondary: [
-      'bg-gray-200',
+      'bg-gray-100',
       'text-gray-900',
-      'dark:bg-gray-700',
-      'dark:text-white',
-      'hover:bg-gray-300',
-      'dark:hover:bg-gray-600',
-      'focus:ring-gray-500',
+      'hover:bg-gray-200',
+      'focus:ring-gray-300',
     ],
     ghost: [
       'bg-transparent',
-      'text-gray-700',
-      'dark:text-gray-300',
+      'text-gray-600',
       'hover:bg-gray-100',
-      'dark:hover:bg-gray-800',
-      'focus:ring-gray-500',
+      'hover:text-gray-900',
+      'focus:ring-gray-200',
     ],
     danger: [
-      'bg-red-600',
+      'bg-gray-900',
       'text-white',
-      'hover:bg-red-700',
-      'active:bg-red-800',
-      'focus:ring-red-500',
-      'disabled:bg-red-400',
+      'hover:bg-gray-700',
+      'active:bg-gray-600',
+      'focus:ring-gray-900',
+      'disabled:bg-gray-300',
     ],
   };
 
   const sizeClasses = {
     sm: ['px-3', 'py-1.5', 'text-sm'],
-    md: ['px-4', 'py-2', 'text-base'],
-    lg: ['px-6', 'py-3', 'text-lg'],
+    md: ['px-4', 'py-2', 'text-sm'],
+    lg: ['px-6', 'py-3', 'text-base'],
   };
 
   return [
@@ -93,7 +88,7 @@ const buttonClasses = computed(() => {
     ...variantClasses[props.variant],
     ...sizeClasses[props.size],
     props.full ? 'w-full' : '',
-    props.disabled || props.loading ? 'cursor-not-allowed opacity-60' : 'cursor-pointer',
+    props.disabled || props.loading ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',
   ].filter(Boolean).join(' ');
 });
 </script>

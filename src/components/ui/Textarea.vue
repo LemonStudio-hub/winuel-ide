@@ -42,22 +42,22 @@ const textareaClasses = computed(() => {
     'border',
     'rounded-lg',
     'transition-all',
-    'duration-200',
+    'duration-150',
     'focus:outline-none',
     'focus:ring-2',
     'resize-none',
   ];
 
   const colorClasses = props.error
-    ? ['border-red-500', 'focus:ring-red-500', 'dark:border-red-400']
-    : ['border-gray-300', 'focus:ring-primary-500', 'focus:border-primary-500', 'dark:border-gray-600', 'dark:focus:border-primary-500'];
+    ? ['border-red-500', 'focus:ring-red-500']
+    : ['border-gray-200', 'focus:ring-gray-900', 'focus:border-gray-900'];
 
   return [
     ...base,
     ...colorClasses,
     props.disabled
-      ? 'bg-gray-100 cursor-not-allowed dark:bg-gray-800'
-      : 'bg-white dark:bg-gray-900',
+      ? 'bg-gray-50 cursor-not-allowed'
+      : 'bg-white placeholder:text-gray-400',
   ].filter(Boolean).join(' ');
 });
 </script>

@@ -1,32 +1,41 @@
 <template>
-  <div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 p-4 z-50">
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 p-6 z-50">
     <div class="max-w-4xl mx-auto">
-      <div class="flex gap-2">
-        <Textarea
-          v-model="inputValue"
-          placeholder="输入你的问题或代码需求..."
-          :rows="1"
-          class="flex-1 resize-none"
-          @keydown.enter.exact.prevent="handleSend"
-          @keydown.enter.shift.exact.prevent
-        />
+      <div class="flex gap-3 items-end">
+        <div class="flex-1 relative">
+          <Textarea
+            v-model="inputValue"
+            placeholder="输入你的问题..."
+            :rows="1"
+            class="flex-1 resize-none pr-12"
+            @keydown.enter.exact.prevent="handleSend"
+            @keydown.enter.shift.exact.prevent
+          />
+          <div class="absolute right-3 bottom-2.5 text-xs text-gray-400 pointer-events-none">
+            Enter 发送
+          </div>
+        </div>
         <Button
           :variant="isStreaming ? 'danger' : 'primary'"
           :disabled="!inputValue.trim() && !isStreaming"
+          size="md"
           @click="handleSend"
         >
-          {{ isStreaming ? '停止' : '发送' }}
+          <svg v-if="!isStreaming" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+          </svg>
+          <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
+          </svg>
         </Button>
-      </div>
-      <div class="text-xs text-gray-500 dark:text-gray-400 mt-2">
-        Enter 发送，Shift + Enter 换行
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 import Textarea from '@/components/ui/Textarea.vue';
 import Button from '@/components/ui/Button.vue';
 
@@ -51,10 +60,4 @@ function handleSend() {
     inputValue.value = '';
   }
 }
-
-watch(() => props.isStreaming, (newVal) => {
-  if (!newVal) {
-    // 流式传输结束，可以做一些清理工作
-  }
-});
 </script>
