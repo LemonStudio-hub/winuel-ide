@@ -1,85 +1,35 @@
-/* Highlight.js 样式导入 */
-@import 'highlight.js/styles/github-dark.css';
+/* Highlight.js 样式 - GitHub主题 */
+@import 'highlight.js/styles/github.css';
 
 /* 自定义代码块样式 */
 .hljs {
-  background: #f9fafb !important;
   padding: 1rem;
   border-radius: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #1f2937;
+  background-color: #f6f8fa !important;
+  border: 1px solid #e1e4e8;
 }
 
-/* 调整代码高亮颜色为黑白风格 */
-.hljs-comment,
-.hljs-quote {
-  color: #6b7280;
-  font-style: italic;
+/* 确保代码块在深色背景下也正常显示 */
+pre.hljs {
+  margin: 1rem 0;
+  overflow-x: auto;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-addition {
-  color: #374151;
-  font-weight: 600;
+/* 代码内联样式 */
+code:not(pre code) {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
 }
 
-.hljs-number,
-.hljs-literal,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag .hljs-attr {
-  color: #4b5563;
-}
-
-.hljs-string,
-.hljs-doctag {
-  color: #1f2937;
-}
-
-.hljs-title,
-.hljs-section,
-.hljs-selector-id {
-  color: #111827;
-  font-weight: 600;
-}
-
-.hljs-type,
-.hljs-class .hljs-title {
-  color: #374151;
-}
-
-.hljs-regexp,
-.hljs-link {
-  color: #4b5563;
-}
-
-.hljs-symbol,
-.hljs-bullet,
-.hljs-subst {
-  color: #374151;
-}
-
-.hljs-meta,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
-  color: #6b7280;
-}
-
-.hljs-built_in,
-.hljs-deletion {
-  color: #4b5563;
-}
-
-.hljs-formula {
-  background: #f3f4f6;
-}
-
-.hljs-emphasis {
-  font-style: italic;
-}
-
-.hljs-strong {
-  font-weight: bold;
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 0;
 }
